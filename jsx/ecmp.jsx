@@ -1,34 +1,9 @@
 // all  Global variables
-let ProductMain = document.querySelector('.products-grid')
-// const Products  = [
-//     {
-//         name:'Black and Gray Athletic Cotton Socks - 6 Pairs',
-//         img: 'images/products/athletic-cotton-socks-6-pairs.jpg',
-//         rating:'45',
-//         price:(1090 /10).toFixed(2),
-//         ratingP:87
-//     },
-//     {
-//         name:' Intermediate Size Basketball',
-//         img: 'images/products/intermediate-composite-basketball.jpg',
-//         rating:'40',
-//         price:(2095 /10).toFixed(2),
-//         ratingP:127
-//     },
-//     {
-//         name:'Adults Plain Cotton T-Shirt - 2 Pack',
-//         img: 'images/products/adults-plain-cotton-tshirt-2-pack-teal.jpg',
-//         rating:'45',
-//         price:(799 /10).toFixed(2),
-//         ratingP:56
-//     },
-
-// ]
-
-let ProductHTML = '';
+let ProductMain = document.querySelector(".products-grid");
+let ProductHTML = "";
 
 products.forEach((product) => {
-    ProductHTML += `<div class="product-container">
+  ProductHTML += `<div class="product-container">
   <div class="product-image-container">
     <img class="product-image"
       src="${product.image}">
@@ -72,10 +47,46 @@ products.forEach((product) => {
     Added
   </div>
 
-  <button class="add-to-cart-button button-primary">
+  <button class="add-to-cart-button button-primary" data-product-id="${
+    product.id
+  }" data-product-name="${product.name}">
     Add to Cart
   </button>
-</div>`})
+</div>`;
+});
 
- ProductMain.innerHTML = ProductHTML;
- console.log(ProductMain.innerHTML);
+ProductMain.innerHTML = ProductHTML;
+
+const addCartBtn = document.querySelectorAll(".add-to-cart-button");
+let cartQuantity = 0;
+addCartBtn.forEach((button) => {
+  button.addEventListener("click", () => {
+    let productID = button.dataset.productId;
+    let productName = button.dataset.productName;
+    let isThere = false;
+       if (cart.length > 0) {
+      cart.forEach((element) => {
+        if (element.id === productID) {
+          element.quantity++;
+          cartQuantity++;
+          isThere = true;
+        }
+      });
+    }
+    
+    // Add new item to cart OUTSIDE the forEach loop
+    if (!isThere) {
+      cart.push({
+        name: productName,
+        quantity: 1, // Start with 1, not element.quantity
+        id: productID,
+      });
+      cartQuantity++;
+    }
+    console.log(cart);
+let cartQuantiyNo = document.querySelector(".cart-quantity");
+
+cartQuantiyNo.innerHTML = cartQuantity;
+
+    });
+  });
