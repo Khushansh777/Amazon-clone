@@ -42,9 +42,9 @@ products.forEach((product) => {
 
   <div class="product-spacer"></div>
 
-  <div class="added-to-cart">
+  <div class="added-to-cart added-to-cart-${product.id}">
     <img src="images/icons/checkmark.png">
-    Added
+   <p>Added</p> 
   </div>
 
   <button class="add-to-cart-button button-primary" data-product-id="${
@@ -63,33 +63,42 @@ let cartQuantity = 0;
 addCartBtn.forEach((button) => {
   button.addEventListener("click", () => {
     let productID = button.dataset.productId;
-    let productName = button.dataset.productName;
-    let selector  = document.querySelector(`.js-quantity-selector-${productID}`);
+    let { productName } = button.dataset;
+    let added = document.querySelector(`.added-to-cart-${productID}`);
+    let selector = document.querySelector(`.js-quantity-selector-${productID}`);
     let value = Number(selector.value);
     let isThere = false;
-       if (cart.length > 0) {
+    let isShowing = false;
+    let IntervalID;
+    if (isShowing === false) {
+      IntervalID = setTimeout(() => {
+        added.classList.add("added-opacity");
+      }, 200);
+      setTimeout(() => added.classList.remove("added-opacity"), 2000);
+      isShowing = true;
+    } else {
+      clearInterval(IntervalID);
+      added.classList.remove("added-opacity");
+      isShowing = false
+    }
+
+    if (cart.length > 0) {
       cart.forEach((element) => {
         if (element.id === productID) {
           element.quantity += value;
-          cartQuantity+= value;
+          cartQuantity += value;
           isThere = true;
         }
       });
     }
-    
     // Add new item to cart OUTSIDE the forEach loop
     if (!isThere) {
-      cart.push({
-        name: productName,
-        quantity: 1, // Start with 1, not element.quantity
-        id: productID,
-      });
+      cart.push({ name: productName, quantity: value, id: productID });
       cartQuantity += value;
     }
     console.log(cart);
-let cartQuantiyNo = document.querySelector(".cart-quantity");
+    let cartQuantiyNo = document.querySelector(".cart-quantity");
 
-cartQuantiyNo.innerHTML = cartQuantity;
-
-    });
+    cartQuantiyNo.innerHTML = cartQuantity;
   });
+});

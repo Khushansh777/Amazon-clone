@@ -657,4 +657,19 @@ const products = [
       "mens"
     ]
   }
+,
+{
+  id: "bd2837e9-5323-403f-b7cf-57fde044a955",
+  image:"images/products/backpack.jpg",
+  rating: {
+    stars: 4.5,
+    count:3213
+  },
+  priceCents: 250000,
+  keywords : [
+      "backpack",
+      "bag",
+      "school bag"
+  ]
+}
 ];
