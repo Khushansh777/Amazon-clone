@@ -1,4 +1,7 @@
 // all  Global variables
+import { cart, updateCartQuantity, cartQuantity } from "../data/cart.js";
+import { products } from '../data/products.js';
+
 let ProductMain = document.querySelector(".products-grid");
 let ProductHTML = "";
 
@@ -59,15 +62,11 @@ ProductMain.innerHTML = ProductHTML;
 
 const addCartBtn = document.querySelectorAll(".add-to-cart-button");
 
-let cartQuantity = 0;
-addCartBtn.forEach((button) => {
-  button.addEventListener("click", () => {
-    let productID = button.dataset.productId;
-    let { productName } = button.dataset;
+
+
+function animateAddToCart(param,productID) {
     let added = document.querySelector(`.added-to-cart-${productID}`);
-    let selector = document.querySelector(`.js-quantity-selector-${productID}`);
-    let value = Number(selector.value);
-    let isThere = false;
+
     let isShowing = false;
     let IntervalID;
     if (isShowing === false) {
@@ -81,24 +80,17 @@ addCartBtn.forEach((button) => {
       added.classList.remove("added-opacity");
       isShowing = false
     }
-
-    if (cart.length > 0) {
-      cart.forEach((element) => {
-        if (element.id === productID) {
-          element.quantity += value;
-          cartQuantity += value;
-          isThere = true;
-        }
-      });
-    }
-    // Add new item to cart OUTSIDE the forEach loop
-    if (!isThere) {
-      cart.push({ name: productName, quantity: value, id: productID });
-      cartQuantity += value;
-    }
-    console.log(cart);
-    let cartQuantiyNo = document.querySelector(".cart-quantity");
+      let cartQuantiyNo = document.querySelector(".cart-quantity");
 
     cartQuantiyNo.innerHTML = cartQuantity;
+
+}
+
+addCartBtn.forEach((button) => {
+  button.addEventListener("click", () => {
+    let productID = button.dataset.productId;
+    animateAddToCart(button,productID)
+     updateCartQuantity(productID, button);
+  
   });
 });
