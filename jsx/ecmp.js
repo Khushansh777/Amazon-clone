@@ -66,7 +66,6 @@ const addCartBtn = document.querySelectorAll(".add-to-cart-button");
 
 function animateAddToCart(param,productID) {
     let added = document.querySelector(`.added-to-cart-${productID}`);
-
     let isShowing = false;
     let IntervalID;
     if (isShowing === false) {
