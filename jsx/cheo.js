@@ -1,5 +1,6 @@
 import {products} from '../data/products.js';
 import {cart} from '../data/cart.js';
+import { moneyFn } from './money.js';
 console.log(cart)
 document.addEventListener('DOMContentLoaded', () => {
 const container =  document.querySelector('.order-summary');
@@ -39,7 +40,7 @@ cart.forEach((cartItem) => {
                   ${matchingItem.name}
                 </div>
                 <div class="product-price">
-                 $${matchingItem.priceCents}
+                 $${moneyFn(matchingItem.priceCents)}
                 </div>
                 <div class="product-quantity">
                   <span>

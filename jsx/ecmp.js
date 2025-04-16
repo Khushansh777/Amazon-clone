@@ -1,6 +1,7 @@
 // all  Global variables
 import { cart, updateCartQuantity, cartQuantity } from "../data/cart.js";
 import { products } from '../data/products.js';
+import { moneyFn } from "./money.js";
 
 let ProductMain = document.querySelector(".products-grid");
 let ProductHTML = "";
@@ -25,7 +26,7 @@ products.forEach((product) => {
   </div>
 
   <div class="product-price">
-    $${(product.priceCents / 100).toFixed(2)}
+    $${moneyFn(product.priceCents)}
   </div>
 
   <div class="product-quantity-container ">
