@@ -1,10 +1,15 @@
 import {products} from '../data/products.js';
-import {cart} from '../data/cart.js';
+import {cart, cartQuantity, deleteCartItem} from '../data/cart.js';
 import { moneyFn } from './money.js';
 console.log(cart)
 document.addEventListener('DOMContentLoaded', () => {
-const container =  document.querySelector('.order-summary');
+   const checkoutHeader = document.querySelector('.checkout-header-middle-section');
+  if (checkoutHeader) {
+    checkoutHeader.innerHTML = `Checkout(${cartQuantity})`;
+  }
 
+function renderCart() {
+const container =  document.querySelector('.order-summary');
 let html = '';
 
 if (!cart || cart.length === 0) {
@@ -28,7 +33,7 @@ cart.forEach((cartItem) => {
  }
 
   if(matchingItem)  
-    { html += ` <div class="cart-item-container">
+    { html += ` <div class="cart-item-container js-cart-item-${matchingItem.id}">
             <div class="delivery-date">
               Delivery date: Tuesday, June 21
             </div>
@@ -51,9 +56,9 @@ cart.forEach((cartItem) => {
                   <span class="update-quantity-link link-primary">
                     Update
                   </span>
-                  <span class="delete-quantity-link link-primary">
-                    Delete
-                  </span>
+                 <span class="delete-quantity-link link-primary" data-id="${matchingItem.id}">
+                      Delete
+                    </span>
                 </div>
               </div>
 
@@ -105,12 +110,34 @@ cart.forEach((cartItem) => {
           </div>`
   }
 });
+
 container.innerHTML = html || "<p>No items could be displayed</p>"
-})
+setupDeleteButtons();
+};
 // delete btn
-const deleteElemnt = document.querySelector('delete-quantity-link');
+function  setupDeleteButtons() {   
+ const deleteElements = document.querySelectorAll('.delete-quantity-link');
+    deleteElements.forEach(deleteBtn => {
+      deleteBtn.addEventListener('click', () => {
+        const datasetId = deleteBtn.dataset.id;
+        deleteCartItem(datasetId);
+        const toDelete = document.querySelector(`.js-cart-item-${datasetId}`)
+    if (toDelete) {
+          toDelete.remove();
+        } else {
+          // If element not found, re-render the whole cart
+          renderCart();
+        
+        } 
+         if (cart.length === 0) {
+          renderCart(); // Re-render to show empty cart message
+        }
+      });
+    });
+    
+}  
+    // Update cart quantity display
 
+renderCart()
+  })
 
-function deleteItem(para) {
-  cart.splice(para, 1);
-}
