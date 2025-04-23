@@ -10,7 +10,7 @@ export let cartQuantity = JSON.parse(localStorage.getItem('cartQ')) || 0;
 console.log(dateOptions);
 // 
 let dateOptions2 ;
-export function calcCulateDelivery(param) { 
+export function calcCulateDelivery(param) { 4
   dateOptions2 = [...dateOptions];
   const today =  format( new Date(), 'EEEE, MMMM dd  ');
     dateOptions2.forEach(element => {
@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
 }
 });
 
-export function deleteCartItem(productID){
+export default function deleteCartItem(productID){
   // Using a simple loop instead of cart.find()
   const itemToRemove = cart.find(cartItem => cartItem.id === productID);
 

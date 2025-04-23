@@ -1,6 +1,5 @@
 import {products} from '../data/products.js';
-import {cart, cartQuantity, deleteCartItem, saveStorageFn,updateDeleiveryOption,calcCulateDelivery,calcDeliveryCart} from '../data/cart.js';
-import { addBusinessDays, format } from 'https://cdn.jsdelivr.net/npm/date-fns@3.6.0/+esm';
+import {cart, cartQuantity, deleteCartItem, updateDeleiveryOption,calcDeliveryCart} from '../data/cart.js';
 import { moneyFn } from './money.js';
 export const date = document.querySelector('.delivery-date');
 
