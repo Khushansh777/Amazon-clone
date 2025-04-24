@@ -1,5 +1,5 @@
 import { dateOptions } from "./dateoptions.js";
-import { date } from "../jsx/cheo.js";
+import { date } from "../jsx/checkout/orderSummary.js";
 import { addBusinessDays, format } from 'https://cdn.jsdelivr.net/npm/date-fns@3.6.0/+esm';
 export const saveStorageFn = function() {
   localStorage.setItem('cart', JSON.stringify(cart));
@@ -76,7 +76,7 @@ if (cart.length > 0) {
   
 
 saveStorageFn()
-  
+
 
   console.log(cart)
 }
@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
 }
 });
 
-export default function deleteCartItem(productID){
+export  function deleteCartItem(productID){
   // Using a simple loop instead of cart.find()
   const itemToRemove = cart.find(cartItem => cartItem.id === productID);
 
