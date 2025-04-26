@@ -1,16 +1,16 @@
 import { dateOptions } from "./dateoptions.js";
 import { date } from "../jsx/checkout/orderSummary.js";
-import { addBusinessDays, format } from 'https://cdn.jsdelivr.net/npm/date-fns@3.6.0/+esm';
+import { addBusinessDays, format, addDays, addMonths } from 'https://cdn.jsdelivr.net/npm/date-fns@3.6.0/+esm';
 export const saveStorageFn = function() {
   localStorage.setItem('cart', JSON.stringify(cart));
   localStorage.setItem('cartQ', JSON.stringify(cartQuantity));
 }
 export let cart = JSON.parse(localStorage.getItem('cart')) || [];
 export let cartQuantity = JSON.parse(localStorage.getItem('cartQ')) || 0;
-console.log(dateOptions);
-// 
+ console.log(dateOptions);
+
 let dateOptions2 ;
-export function calcCulateDelivery(param) { 4
+export function calcCulateDelivery(param) { 
   dateOptions2 = [...dateOptions];
   const today =  format( new Date(), 'EEEE, MMMM dd  ');
     dateOptions2.forEach(element => {

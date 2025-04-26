@@ -1,17 +1,15 @@
 import {products} from '../../data/products.js';
 import {cart, cartQuantity, deleteCartItem, updateDeleiveryOption,calcDeliveryCart} from '../../data/cart.js';
  import { moneyFn } from '../money.js';
+ import { renderPayementSummary } from './payementSUmmary.js';
+ import { checkoutHeader } from '../checkoutheader.js';
 export const date = document.querySelector('.delivery-date');
 export function renderOrderSummary() {
 document.addEventListener('DOMContentLoaded', () => {
-   const checkoutHeader = document.querySelector('.checkout-header-middle-section');
-  if (checkoutHeader) {
-    checkoutHeader.innerHTML = `Checkout(${cartQuantity})`;
-  }
-const container =  document.querySelector('.order-summary');
 
 function renderCart() {
-
+  checkoutHeader(cartQuantity)
+const container =  document.querySelector('.order-summary');
 let html = '';
 
 if (!cart || cart.length === 0) {
@@ -136,13 +134,11 @@ function  setupDeleteButtons() {
         const datasetId = deleteBtn.dataset.id;
         deleteCartItem(datasetId);
         const toDelete = document.querySelector(`.js-cart-item-${datasetId}`);
-    if (toDelete) {
-          toDelete.remove();
-        } else {
+  
           // If element not found, re-render the whole cart
           renderCart();
         
-        } 
+       
          if (cart.length === 0) {
           renderCart(); // Re-render to show empty cart message
         }
@@ -217,22 +213,20 @@ function saveBtn() {
       updateBtm.classList.remove('display-none');
       
       // Update checkout header
-      const checkoutHeader = document.querySelector('.checkout-header-middle-section');
-      if (checkoutHeader) {
-        checkoutHeader.innerHTML = `Checkout(${totalQuantity})`;
-      }
+      checkoutHeader(totalQuantity)
       
       console.log('Saved cart:', JSON.stringify(cart));
       console.log('Saved cartQ:', localStorage.getItem('cartQ'));
     });
   });
 
-  function inputListener() {
+   function inputListener() {
     const input = document.querySelectorAll('.delivery-option-input');
     input.forEach((element) => element.addEventListener('click', () => {
       const productID = element.dataset.productId;
       const deliverOPtionID = Number(element.dataset.optionId);
       updateDeleiveryOption(productID,deliverOPtionID);
+      renderPayementSummary()
       console.log(cart)
       renderCart()
     }))
