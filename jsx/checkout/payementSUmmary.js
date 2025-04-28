@@ -2,6 +2,7 @@ import { cartQuantity } from "../../data/cart.js";
 import { cart } from "../../data/cart.js";
 import { products } from "../../data/products.js";
 
+
 export function renderPayementSummary() {
     const payementSummaryElement = document.querySelector('.payment-summary')
     let matchingItem;
@@ -40,12 +41,12 @@ export function renderPayementSummary() {
 
           <div class="payment-summary-row">
             <div>Items (${cartQuantity}):</div>
-            <div class="payment-summary-money">$${(totalCost /100).toFixed(2)}</div>
+            <div class="payment-summary-money">$${(Math.round(totalCost /100)).toFixed(2)}</div>
           </div>
 
           <div class="payment-summary-row">
             <div>Shipping &amp; handling:</div>
-            <div class="payment-summary-money">$${(shippingCharges/100).toFixed(2)}</div>
+            <div class="payment-summary-money">$${(Math.round(shippingCharges/100)).toFixed(2)}</div>
           </div>
 
           <div class="payment-summary-row subtotal-row">
