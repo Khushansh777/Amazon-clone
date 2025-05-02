@@ -1,6 +1,5 @@
 import { dateOptions } from "./dateoptions.js";
 import { date } from "../jsx/checkout/orderSummary.js";
-// import {cart1} from "./cartO.js";
 import { addBusinessDays, format, addDays, addMonths } from 'https://cdn.jsdelivr.net/npm/date-fns@3.6.0/+esm';
 export const saveStorageFn = function() {
   localStorage.setItem('cart', JSON.stringify(cart));
