@@ -1,11 +1,17 @@
 import { dateOptions } from "./dateoptions.js";
 import { date } from "../jsx/checkout/orderSummary.js";
+// import {cart1} from "./cartO.js";
 import { addBusinessDays, format, addDays, addMonths } from 'https://cdn.jsdelivr.net/npm/date-fns@3.6.0/+esm';
 export const saveStorageFn = function() {
   localStorage.setItem('cart', JSON.stringify(cart));
   localStorage.setItem('cartQ', JSON.stringify(cartQuantity));
 }
-export let cart = JSON.parse(localStorage.getItem('cart')) || [];
+export let cart =   JSON.parse(localStorage.getItem('cart')) || [];;
+
+export function localStoreCart() {
+  JSON.parse(localStorage.getItem('cart')) || [];
+}
+
 export let cartQuantity = JSON.parse(localStorage.getItem('cartQ')) || 0;
  console.log(dateOptions);
 

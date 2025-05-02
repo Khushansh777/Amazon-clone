@@ -30,7 +30,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
   /**
    * ## Require &amp; Instantiate
-   *
+   *s
    * Require Jasmine's core files. Specifically, this requires and attaches all of Jasmine's code to the `jasmine` reference.
    */
   const jasmine = jasmineRequire.core(jasmineRequire),
