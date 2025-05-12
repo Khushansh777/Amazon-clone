@@ -1,3 +1,43 @@
+import { moneyFn } from "../jsx/money.js";
+class Product {
+  id;
+  image;
+  name;
+  priceCents;
+  rating;
+  keywords;
+  constructor(details) {
+    this.id = details.id;
+    this.image = details.image
+    this.name = details.name;
+    this.priceCents = details.priceCents;
+    this.rating = details.rating
+    this.keywords = details.keywords
+  }
+  getImage() {
+    return `images/ratings/rating-${this.rating.stars * 10}.png`
+  }
+
+  getPrice(){
+    return moneyFn(this.priceCents)
+  }
+}
+const product2 =  new Product({
+    id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
+    image: "images/products/athletic-cotton-socks-6-pairs.jpg",
+    name: "Black and Gray Athletic Cotton Socks - 6 Pairs",
+    rating: {
+      stars: 4.5,
+      count: 87
+    },
+    priceCents: 1090,
+    keywords: [
+      "socks",
+      "sports",
+      "apparel"
+    ]
+  })
+    console.log(product2);
 export const products = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
@@ -672,4 +712,7 @@ export const products = [
       "school bag"
   ]
 }
-];
+].map((details) => {
+    return new Product(details);
+});
+console.log(products);

@@ -8,10 +8,17 @@ export const saveStorageFn = function() {
 
 class Cart {
      // Get cart0 from localStorage
+      #balance = 0  
      constructor(param){
       this.items = JSON.parse(localStorage.getItem(param)) || []
       this.cart0Quantity =  JSON.parse(localStorage.getItem(param)) || 0
-      this.dateOptions2;        
+      this.dateOptions2;      
+     }
+     static wasssup() {
+      return 'wassup'
+     }
+     getbalance(){
+      return this.#balance
      }
 
    localStorecart0() {
@@ -149,5 +156,5 @@ class Cart {
 // Make cart0 available globally
 const cart1 = new Cart('cart');
 const buisnessCart = new Cart('buisnesscart');
-console.log(cart1);
-console.log(buisnessCart)
+console.log(cart1.getbalance());
+console.log(Cart.wasssup());
