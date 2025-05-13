@@ -1,6 +1,6 @@
 // all  Global variables
 import { cart, updateCartQuantity, cartQuantity } from "../data/cart.js";
-import { products } from '../data/products.js';
+import { products,  } from '../data/products.js';
 import { moneyFn } from "./money.js";
 
 let ProductMain = document.querySelector(".products-grid");
@@ -43,7 +43,7 @@ products.forEach((product) => {
       <option value="10">10</option>
     </select>
   </div>
-
+  ${product.setImage()}
   <div class="product-spacer"></div>
 
   <div class="added-to-cart added-to-cart-${product.id}">
