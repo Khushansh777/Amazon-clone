@@ -24,6 +24,7 @@ export class Cart {
    localStorecart0() {
     return JSON.parse(localStorage.getItem('cart0')) || [];
   }
+  
  // Calculate delivery options with dates
   
   calcCulateDelivery(param) { 
