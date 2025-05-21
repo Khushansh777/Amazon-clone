@@ -135,3 +135,12 @@ saveStorageFn()
 
 return cart
 }
+export function getCartBackend(param){
+    const xhr =  new XMLHttpRequest();
+    xhr.addEventListener('load', () =>{
+    const backCart = xhr.response
+    param();
+  })
+    xhr.open('GET', 'https://supersimplebackend.dev/cart/');
+    xhr.send();
+}

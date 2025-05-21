@@ -4,7 +4,15 @@ import { products } from "../../data/products.js";
 
 
 export function renderPayementSummary() {
-    const payementSummaryElement = document.querySelector('.payment-summary')
+    const payementSummaryElement = document.querySelector('.payment-summary');
+    if (!payementSummaryElement) {
+        console.error('Payment summary container not found!');
+        return;
+    }
+     if (!products || products.length === 0) {
+        console.log('Products not loaded yet, will render payment summary later');
+        return;
+    }
     let matchingItem;
      let totalCost = 0;
      let totalhtml = '';

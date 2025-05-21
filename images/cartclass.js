@@ -1,4 +1,4 @@
-import { dateOptions } from "./dateoptions.js";
+import { dateOptions } from "../data/dateoptions.js";
 import { date } from "../jsx/checkout/orderSummary.js";
 import { addBusinessDays, format, addDays, addMonths } from 'https://cdn.jsdelivr.net/npm/date-fns@3.6.0/+esm';
 export const saveStorageFn = function() {

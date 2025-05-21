@@ -55,10 +55,28 @@ class Appliance extends Product{
     }
 }
 
-
+export let products = [];
   // this = hello 
   // .call() can be used as normal call like
-   
+ export function getFromBackend(param){
+    const xhr =  new XMLHttpRequest();
+    xhr.addEventListener('load', () =>{
+    products =  JSON.parse(xhr.response).map((details) => {
+  if(details.type === 'clothing'){
+    return new Clothing(details); 
+  } 
+  if(details.type === 'Appliance'){
+    return new Appliance(details);  
+  }
+    return new Product(details);
+    })
+  param();
+  })
+    xhr.open('GET', 'https://supersimplebackend.dev/products/');
+    xhr.send();
+}
+
+  /*
 export const products = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
@@ -746,3 +764,4 @@ export const products = [
     return new Product(details);
  
 });
+*/

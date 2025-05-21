@@ -4,12 +4,25 @@ import {cart, cartQuantity, deleteCartItem, updateDeleiveryOption,calcDeliveryCa
  import { renderPayementSummary } from './payementSUmmary.js';
  import { checkoutHeader } from '../checkoutheader.js';
 export const date = document.querySelector('.delivery-date');
-export function renderOrderSummary() {
-document.addEventListener('DOMContentLoaded', () => {
 
-function renderCart() {
-  checkoutHeader(cartQuantity)
+
+export function renderOrderSummary() {
+  if (!products || products.length === 0) {
+    console.log('Products not loaded yet, will render when products are available');
+    return;
+  }
+document.addEventListener('DOMContentLoaded', () => {
 const container =  document.querySelector('.order-summary');
+if (!container) {
+    console.error('Order summary container not found in DOM!');
+    return;
+  }
+  renderCart()
+function renderCart() {
+   
+  checkoutHeader(cartQuantity)
+
+ 
 let html = '';
 
 if (!cart || cart.length === 0) {

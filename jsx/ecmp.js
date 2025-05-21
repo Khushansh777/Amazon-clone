@@ -1,7 +1,10 @@
 // all  Global variables
 import { cart, updateCartQuantity, cartQuantity } from "../data/cart.js";
-import { products,  } from '../data/products.js';
+import { products,getFromBackend } from '../data/products.js';
 import { moneyFn } from "./money.js";
+
+getFromBackend(renderEcmp);
+function renderEcmp(){
 
 let ProductMain = document.querySelector(".products-grid");
 let ProductHTML = "";
@@ -96,3 +99,4 @@ addCartBtn.forEach((button) => {
   
   });
 });
+}
