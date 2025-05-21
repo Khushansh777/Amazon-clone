@@ -1,7 +1,7 @@
 // main.js - The key file that controls execution order
 import { renderOrderSummary } from "../jsx/checkout/orderSummary.js";
 import { renderPayementSummary } from "./checkout/payementSUmmary.js";
-import { getFromBackend } from "../data/products.js";
+import { getFromBackend, getCartBackendFetch } from "../data/products.js";
 import { getCartBackend } from "../data/cart.js";
 
 // Show loading indicators
@@ -15,13 +15,7 @@ import { getCartBackend } from "../data/cart.js";
 //   new Promise(resolve => setTimeout(() => resolve('Lolq'), 500)),
 // ]).then(console.log); // Should log both after 1 second
 Promise.all([
-  new Promise((resolve) => {
-    console.log('Setting up getFromBackend promise');
-    getFromBackend(() => {
-      console.log('getFromBackend callback executed');
-      resolve('lolipop');  // Resolve INSIDE the callback
-    });
-  }),
+  getCartBackendFetch(),
   new Promise((resolve, reject) => {
     console.log('Setting up getCartBackend promise');
     getCartBackend((err, data) => {
