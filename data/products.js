@@ -55,51 +55,37 @@ class Appliance extends Product{
     }
 }
 
-export let products = [];
+
   // this = hello 
   // .call() can be used as normal call like
 
-export function getCartBackendFetch(){
-  const promise =  fetch('https://supersimplebackend.dev/products/').then((response) =>{
-    return response.json()
-  }).then((productData) => {
-   return  productData.map((details) => {
-  if(details.type === 'clothing'){
-    return new Clothing(details); 
-  } 
-  if(details.type === 'Appliance'){
-    return new Appliance(details);  
-  }
-    return new Product(details);
-    })
+// export function getCartBackendFetch(){
+//   const promise =  fetch('https://supersimplebackend.dev/products/').then((response) =>{
+//     return response.json()
+//   }).then((productData) => {
+//    return  productData.map((details) => {
+//   if(details.type === 'clothing'){
+//     return new Clothing(details); 
+//   } 
+//   if(details.type === 'Appliance'){
+//     return new Appliance(details);  
+//   }
+//     return new Product(details);
+//     })
   
-  });
+//   });
 
-  return promise // will return promise pending 
-}
-getCartBackendFetch().then((data) => {
-  console.log(data);
-});
+//   return promise // will return promise pending 
+// }
+// getCartBackendFetch().then((data) => {
+//   console.log(data);
+// });
 
- export function getFromBackend(param){
-    const xhr =  new XMLHttpRequest();
-    xhr.addEventListener('load', () =>{
-    products =  JSON.parse(xhr.response).map((details) => {
-  if(details.type === 'clothing'){
-    return new Clothing(details); 
-  } 
-  if(details.type === 'Appliance'){
-    return new Appliance(details);  
-  }
-    return new Product(details);
-    })
-  param();
-  })
-    xhr.open('GET', 'https://supersimplebackend.dev/products/');
-    xhr.send();
-}
 
-  /*
+
+ 
+
+  
 export const products = [
   {
     id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
@@ -787,4 +773,4 @@ export const products = [
     return new Product(details);
  
 });
-*/
+

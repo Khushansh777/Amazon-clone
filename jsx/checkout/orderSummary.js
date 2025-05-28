@@ -1,10 +1,8 @@
 import {products} from '../../data/products.js';
 import {cart, cartQuantity, deleteCartItem, updateDeleiveryOption,calcDeliveryCart} from '../../data/cart.js';
- import { moneyFn } from '../money.js';
  import { renderPayementSummary } from './payementSUmmary.js';
  import { checkoutHeader } from '../checkoutheader.js';
 export const date = document.querySelector('.delivery-date');
-
 
 export function renderOrderSummary() {
   if (!products || products.length === 0) {
@@ -17,7 +15,8 @@ if (!container) {
     console.error('Order summary container not found in DOM!');
     return;
   }
-  renderCart()
+  renderCart();
+
 function renderCart() {
    
   checkoutHeader(cartQuantity)

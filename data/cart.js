@@ -5,7 +5,7 @@ export const saveStorageFn = function() {
   localStorage.setItem('cart', JSON.stringify(cart));
   localStorage.setItem('cartQ', JSON.stringify(cartQuantity));
 }
-export let cart =   JSON.parse(localStorage.getItem('cart')) || [];;
+export let cart =   JSON.parse(localStorage.getItem('cart')) || [];
 
 export function localStoreCart() {
   JSON.parse(localStorage.getItem('cart')) || [];
@@ -75,10 +75,10 @@ if (cart.length > 0) {
     }
     saveStorageFn()
     let cartQuantityNo = document.querySelector(".cart-quantity");
-  if (cartQuantityNo) {
-    cartQuantityNo.innerHTML = cartQuantity;
-  }
-  
+    if (cartQuantityNo) {
+      cartQuantityNo.innerHTML = cartQuantity;
+    }
+
 
 saveStorageFn()
 
