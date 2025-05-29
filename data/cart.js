@@ -48,7 +48,7 @@ let isThere = false;
    
 if (cart.length > 0) {
       cart.forEach((element) => {
-        if (element.id === param) {
+        if (element.productId === param) {
           element.quantity += value;
           cartQuantity += value;
           isThere = true;
@@ -64,9 +64,11 @@ if (cart.length > 0) {
     // Add new item to cart OUTSIDE the forEach loop
     if (!isThere) {
       let { productName } = btn.dataset;  
-      cart.push({   name: productName, 
+      cart.push({   
+      name: productName, 
       quantity: value, 
-      id: param, 
+      id: param,
+      productId: param, 
       deliveryOptionId: dateOptionsID,
       deliverDate: selectedDeliveryOption.deliverDate,
       deliveryPrice: selectedDeliveryOption.price,
@@ -96,6 +98,7 @@ export function updateDeleiveryOption(productID,deliveryOptionId) {
     cartItem.deliveryPrice = deliveryOption.price;
     cartItem.deliveryDays = deliveryOption.days;
     date.innerHTML = cartItem.deliverDate
+    cartItem.productId = productID;
     saveStorageFn()
     }
 

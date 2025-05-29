@@ -56,7 +56,7 @@ async function loadSomething2() {
     getCartBackendFetch(),
     new Promise((resolve, reject) => {
       console.log('Setting up getCartBackend promise');
-      resolve('babu');
+      resolve('babu');  
       getCartBackend((err, data) => {
         console.log('getCartBackend callback executed');
         if (err) {
