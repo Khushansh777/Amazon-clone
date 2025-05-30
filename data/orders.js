@@ -1,12 +1,17 @@
 import { cart, orderPlacedDate } from "./cart.js";
 import { products } from "./products.js";
 import { formatCurrency } from "../jsx/formatCurr.js";
-let orders = [];
+
+let orders = JSON.parse(localStorage.getItem('orders')) || [];
+
+console.log(orders)
 
 export function placeOrders(param){
     orders.unshift(param)
+    console.log(param)
     saveToStorage()
 }
+
 
 function saveToStorage(){
     localStorage.setItem('orders', JSON.stringify(orders));
@@ -14,6 +19,10 @@ function saveToStorage(){
 
 function renderOrder() {
   const container = document.querySelector('.js-order-container');
+  if (!container) {
+    console.error('Order container not found!');
+    return;
+  }
   let html = '';
 
   if (!cart || cart.length === 0) {
@@ -26,9 +35,18 @@ function renderOrder() {
     return;
   }
 
-  cart.forEach((cartItem, idx) => {
+  if (!orders || orders.length === 0) {
+    container.innerHTML = `
+      <div class="empty-cart-message">
+        <p>You have no orders yet.</p>
+        <a href="ecmp.html" class="continue-shopping-link">Continue Shopping</a>
+      </div>`;
+    return;
+  }
+
+  orders.forEach((cartItem, idx) => {
     // Find the product info for this cart item
-    const matchedProduct = products.find(product => product.id === cartItem.id);
+    const matchedProduct = products.find(product => product.id === cartItem.productId);
     if (!matchedProduct) return;
 
     html += `

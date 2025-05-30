@@ -78,18 +78,25 @@ export function renderPayementSummary() {
     totalhtml = html
     payementSummaryElement.innerHTML = totalhtml
     console.log(totalBeforeCharge);
-
+    let mappedItem
     document.querySelector('.js-orders-element').addEventListener('click', async () => {
       console.log('Original cart:', cart);
-
+    if(cart.length === 0){
+      alert('Cart is empty. Buy something first');
+    }
       const mappedCart = cart.map(item => {
-        const mappedItem = {
-          productId: item.productId,
-          quantity: item.quantity,
-          deliveryOptionId: Number(item.deliveryOptionId),
-          deliveryDate: item.deliverDate,
-          deliveryPrice: item.deliveryPrice === 'FREE' ? 0 : Number(item.deliveryPrice)
+         mappedItem = {
+          name: item.name, 
+      quantity: item.quantity, 
+      id: item.productId,
+      productId: item.productId, 
+      deliveryOptionId: item.deliveryOptionId,
+      deliverDate: item.deliverDate,
+      deliveryPrice:item.deliveryPrice,
+      deliveryDays: item.deliveryDays
+          
         };
+        placeOrders(mappedItem)
         console.log('Mapped cart item:', mappedItem);
         return mappedItem;
       });
@@ -114,14 +121,15 @@ export function renderPayementSummary() {
         //   throw new Error(`HTTP error! status: ${response.status}`);
         // }
         
-        const orders = await response.json();
-        placeOrders(orders);
+        let orders = await response.json();
+        console.log(mappedItem)
        orderDate = new Date
         console.log('Order created successfully:', orders);
       } catch (error) {
         console.error('Error creating order:', error);
       }
       window.location.href = 'orders.html'
+      
     });
 
   }
