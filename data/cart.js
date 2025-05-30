@@ -39,12 +39,12 @@ export function calcDeliveryCart(param) {
 }
 export function orderPlacedDate(){
   const today = format( new Date(), 'EEEE, MMMM dd');
-  console.log(today)
   return today
 }
 console.log(dateOptions2)
 calcCulateDelivery()
 export function updateCartQuantity(param, btn, dateOptionsID = 1) { 
+
 const selectedDeliveryOption = dateOptions.find(option => option.id === dateOptionsID);
 let selector = document.querySelector(`.js-quantity-selector-${param}`);
 let value = Number(selector.value);
@@ -57,8 +57,9 @@ if (cart.length > 0) {
           element.quantity += value;
           cartQuantity += value;
           isThere = true;
+          saveStorageFn()
           if (dateOptionsID && !element.dateOptionsID || element.dateOptionsID !== dateOptionsID) {
-            element.dateOptionsID = deliveryOptionId;
+            // element.dateOptionsID = deliveryOptionId;
             element.deliverDate = selectedDeliveryOption.deliverDate;
             element.deliveryPrice = selectedDeliveryOption.price;
             element.deliveryDays = selectedDeliveryOption.days;
@@ -80,7 +81,6 @@ if (cart.length > 0) {
       deliveryDays: selectedDeliveryOption.days});
       cartQuantity += value;
     }
-    saveStorageFn()
     let cartQuantityNo = document.querySelector(".cart-quantity");
     if (cartQuantityNo) {
       cartQuantityNo.innerHTML = cartQuantity;
