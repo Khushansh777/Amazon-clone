@@ -11,9 +11,10 @@ renderPayementSummary()
 // new Promise((response) =>{
 //   getFromBackend(() =>{
 //     response();
-//   }). 
+//   }).
+
 // }).then()
-// Promise.all([
+// Promise.all(
 //   new Promise(resolve => setTimeout(() => resolve('Lol'), 1000)),
 //   new Promise(resolve => setTimeout(() => resolve('Lolq'), 500)),
 // ]).then(console.log); // Should log both after 1 second

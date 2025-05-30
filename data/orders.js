@@ -1,14 +1,14 @@
-import { cart, orderPlacedDate } from "./cart.js";
+import { cart, orderPlacedDate, calcDeliveryCart } from "./cart.js";
 import { products } from "./products.js";
 import { formatCurrency } from "../jsx/formatCurr.js";
 
 let orders = JSON.parse(localStorage.getItem('orders')) || [];
 
-console.log(orders)
+// console.log(orders)
 
 export function placeOrders(param){
     orders.unshift(param)
-    console.log(param)
+    // console.log(param)
     saveToStorage()
 }
 
@@ -26,7 +26,7 @@ function renderOrder() {
   let html = '';
 
   if (!cart || cart.length === 0) {
-    console.log('Cart is empty');
+    // console.log('Cart is empty');
     container.innerHTML = `
       <div class="empty-cart-message">
         <p>Your cart is empty</p>
@@ -81,7 +81,7 @@ function renderOrder() {
             <div class="product-quantity">
               Quantity: ${cartItem.quantity}
             </div>
-            <button class="buy-again-button button-primary">
+            <button class="buy-again-button button-primary js-buy-again" data-product-id="${matchedProduct.id}">
               <img class="buy-again-icon" src="images/icons/buy-again.png">
               <span class="buy-again-message">Buy it again</span>
             </button>
@@ -99,6 +99,31 @@ function renderOrder() {
   });
 
   container.innerHTML = html;
+
+  // Add event listeners after the HTML is rendered
+  document.querySelectorAll('.js-buy-again').forEach(button => {
+    button.addEventListener('click', () => {
+      const productId = button.dataset.productId;
+      const matchedProduct = products.find(product => product.id === productId);
+      
+      if (matchedProduct) {
+        // Create a new order object with the correct structure
+        const newOrder = {
+          name: matchedProduct.name,
+          quantity: 1,
+          id: matchedProduct.id,
+          productId: matchedProduct.id,
+          deliveryOptionId: 1, // Default to standard delivery
+          deliverDate: calcDeliveryCart(7), // Default to 7-day delivery
+          deliveryPrice: 'FREE',
+          deliveryDays: 7
+        };
+        
+        placeOrders(newOrder);
+        window.location.href = 'ecmp.html'; // Redirect to shopping page
+      }
+    });
+  });
 }
 
 // Wait for DOM to be fully loaded before running renderOrder

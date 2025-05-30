@@ -10,7 +10,7 @@ export function renderPayementSummary() {
         return;
     }
      if (!products || products.length === 0) {
-        console.log('Products not loaded yet, will render payment summary later');
+        // console.log('Products not loaded yet, will render payment summary later');
         return;
     }
     let matchingItem;
@@ -77,10 +77,11 @@ export function renderPayementSummary() {
         </div>`
     totalhtml = html
     payementSummaryElement.innerHTML = totalhtml
-    console.log(totalBeforeCharge);
+    // console.log(totalBeforeCharge);
     let mappedItem
     document.querySelector('.js-orders-element').addEventListener('click', async () => {
-      console.log('Original cart:', cart);
+      // console.log('Original cart:', cart);
+      
     if(cart.length === 0){
       alert('Cart is empty. Buy something first');
     }
@@ -97,7 +98,7 @@ export function renderPayementSummary() {
           
         };
         placeOrders(mappedItem)
-        console.log('Mapped cart item:', mappedItem);
+        // console.log('Mapped cart item:', mappedItem);
         return mappedItem;
       });
 
@@ -122,9 +123,9 @@ export function renderPayementSummary() {
         // }
         
         let orders = await response.json();
-        console.log(mappedItem)
+        // console.log(mappedItem)
        orderDate = new Date
-        console.log('Order created successfully:', orders);
+        // console.log('Order created successfully:', orders);
       } catch (error) {
         console.error('Error creating order:', error);
       }

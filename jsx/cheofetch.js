@@ -28,24 +28,24 @@ async function  loadSomething(){
 try{
   await getCartBackendFetch();
    dataResolved = await new Promise((resolve, reject) => {
-    console.log('Setting up getCartBackend promise');
+    // console.log('Setting up getCartBackend promise');
     getCartBackend((err, data) => {
-      console.log('getCartBackend callback executed');
+      // console.log('getCartBackend callback executed');
       if (err) {
         reject(err);
       } else {
         resolve(data || 'nothing');  // Default value if data is undefined
       }
-      console.log(['done']);
+      // console.log(['done']);
     });
   })
 } catch(error){
-  console.log('error ', error);
+  // console.log('error ', error);
 }
-  console.log('All promises resolved:');
+  // console.log('All promises resolved:');
   renderOrderSummary();
   renderPayementSummary();
-  console.log(dataResolved)
+  // console.log(dataResolved)
   return dataResolved;
 }
 
@@ -55,20 +55,20 @@ async function loadSomething2() {
   const values = await Promise.all([
     getCartBackendFetch(),
     new Promise((resolve, reject) => {
-      console.log('Setting up getCartBackend promise');
+      // console.log('Setting up getCartBackend promise');
       resolve('babu');  
       getCartBackend((err, data) => {
-        console.log('getCartBackend callback executed');
+        // console.log('getCartBackend callback executed');
         if (err) {
           reject(err);
         } else {
           resolve(data);
         }
-        console.log(['done']);
+        // console.log(['done']);
       });
     })
   ]);
-  console.log('All promises resolved:', values);
+  // console.log('All promises resolved:', values);
   renderOrderSummary();
   renderPayementSummary();
   return values;
@@ -76,6 +76,6 @@ async function loadSomething2() {
 
 // Call the function once and properly await its result
 loadSomething2().then(values => {
-  console.log('loadSomething2 completed with values:', values);
+  // console.log('loadSomething2 completed with values:', values);
 });
 

@@ -11,7 +11,7 @@ class Car {
     }
     // console.log the brand and model
     displayinfo(){
-        console.log(`${this.#brand},${this.#model}, Speed: ${this.speed.toFixed(1)} kmph,${this.trunk}`);
+        // console.log(`${this.#brand},${this.#model}, Speed: ${this.speed.toFixed(1)} kmph,${this.trunk}`);
     }
     // inc spped by 5kmph if 0 < speed < 200kmph
     go(){
@@ -79,7 +79,7 @@ class Racecar extends Car{
         this.speed = 500;
         this.cureentacceration = 0;
     }
-     console.log(`🚗💨 ${this.speed.toFixed(1)} km/h (Accel: ${this.cureentacceration.toFixed(1)})`);
+     // console.log(`🚗💨 ${this.speed.toFixed(1)} km/h (Accel: ${this.cureentacceration.toFixed(1)})`);
         this.displayinfo();
     }
   
@@ -100,7 +100,7 @@ const car2 =  new Car('Rolls Royce ', 'Cullinan');
 
 
 // call fn to console.log
-car.displayinfo();
+// car.displayinfo();
 car2.displayinfo();
 
 // test go and brake
@@ -164,7 +164,6 @@ car.go();
 car.go();
 car.go();
 car.go();
-car.go();
 
 car.brake();
 car.brake();
@@ -228,8 +227,7 @@ car.brake();
 car.brake();
 car.brake();
 car.brake();
-car.brake();
-car.brake();
+car.go();
 car.go();
 car.go();
 car.go();
@@ -298,7 +296,6 @@ car.go();
 car.go();
 
 
-car.brake();
 car.brake();
 car.brake();
 car.brake();

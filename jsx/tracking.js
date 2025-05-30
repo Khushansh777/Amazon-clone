@@ -2,15 +2,15 @@ import { cart } from "../data/cart.js";
 import { products } from "../data/products.js";
  
 const currentURL = new URL(window.location.href);
-   console.log(currentURL.searchParams.get('orderId'));
-   console.log(currentURL.searchParams.get('productId'));
+   // console.log(currentURL.searchParams.get('orderId'));
+   // console.log(currentURL.searchParams.get('productId'));
 
  function renderTrackingInfo(){
 
 const container = document.querySelector('#js-ordertracking-container');
 
 if (!container) {
-  console.error('Container .js-ordertracking-container not found!');
+  // console.error('Container .js-ordertracking-container not found!');
   return;
 }
 
@@ -18,8 +18,8 @@ if (!container) {
 
 const matchedProduct = products.find(product => product.id === currentURL.searchParams.get('orderId'));
 const deliveryDate =   cart.find(cartItem => cartItem.id === currentURL.searchParams.get('orderId'));
-console.log(deliveryDate)
-console.log(matchedProduct)
+// console.log(deliveryDate)
+// console.log(matchedProduct)
 if (!matchedProduct) return;
 let html = '';
 html += `

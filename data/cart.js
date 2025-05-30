@@ -12,7 +12,7 @@ export function localStoreCart() {
 }
 
 export let cartQuantity = JSON.parse(localStorage.getItem('cartQ')) || 0;
- console.log(dateOptions);
+// console.log(dateOptions);
 
 let dateOptions2 ;
 export function calcCulateDelivery(param) { 
@@ -23,9 +23,9 @@ export function calcCulateDelivery(param) {
     addBusinessDays(today, element.days || param),
     'EEEE MMMM dd'
    )
-   console.log(element.deliverDate);
+   // console.log(element.deliverDate);
  });
- console.log(today)
+// console.log(today)
  return dateOptions2
 }
 
@@ -41,7 +41,7 @@ export function orderPlacedDate(){
   const today = format( new Date(), 'EEEE, MMMM dd');
   return today
 }
-console.log(dateOptions2)
+// console.log(dateOptions2)
 calcCulateDelivery()
 export function updateCartQuantity(param, btn, dateOptionsID = 1) { 
 
@@ -90,7 +90,7 @@ if (cart.length > 0) {
 saveStorageFn()
 
 
-  console.log(cart)
+  // console.log(cart)
 }
 
 export function updateDeleiveryOption(productID,deliveryOptionId) {

@@ -156,5 +156,3 @@ export class Cart {
 // Make cart0 available globally
 const cart1 = new Cart('cart');
 const buisnessCart = new Cart('buisnesscart');
-console.log(cart1.getbalance());
-console.log(Cart.wasssup());

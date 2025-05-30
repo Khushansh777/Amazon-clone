@@ -6,13 +6,13 @@ export const date = document.querySelector('.delivery-date');
 
 export function renderOrderSummary() {
   if (!products || products.length === 0) {
-    console.log('Products not loaded yet, will render when products are available');
+    // console.log('Products not loaded yet, will render when products are available');
     return;
   }
 document.addEventListener('DOMContentLoaded', () => {
 const container =  document.querySelector('.order-summary');
 if (!container) {
-    console.error('Order summary container not found in DOM!');
+    // console.error('Order summary container not found in DOM!');
     return;
   }
   renderCart();
@@ -25,7 +25,7 @@ function renderCart() {
 let html = '';
 
 if (!cart || cart.length === 0) {
-    console.log('Cart is empty');
+    // console.log('Cart is empty');
     container.innerHTML = `
       <div class="empty-cart-message">
         <p>Your cart is empty</p>
@@ -177,7 +177,7 @@ updateBtn.forEach((btn) => {
   input.classList.remove('display-none');
   btn.classList.add('display-none');
   para.classList.add('display-none');
-  console.log(dataId);
+  // console.log(dataId);
     })
 })
 }
@@ -228,8 +228,8 @@ function saveBtn() {
       // Update checkout header
       checkoutHeader(totalQuantity)
       
-      console.log('Saved cart:', JSON.stringify(cart));
-      console.log('Saved cartQ:', localStorage.getItem('cartQ'));
+      // console.log('Saved cart:', JSON.stringify(cart));
+      // console.log('Saved cartQ:', localStorage.getItem('cartQ'));
     });
   });
 
@@ -240,7 +240,7 @@ function saveBtn() {
       const deliverOPtionID = Number(element.dataset.optionId);
       updateDeleiveryOption(productID,deliverOPtionID);
       renderPayementSummary()
-      console.log(cart)
+      // console.log(cart)
       renderCart()
     }))
   }
