@@ -2,7 +2,7 @@ import { cartQuantity } from "../../data/cart.js";
 import { cart } from "../../data/cart.js";
 import { products } from "../../data/products.js";
 import { placeOrders } from "../../data/orders.js";
-
+export let orderDate ;
 export function renderPayementSummary() {
     const payementSummaryElement = document.querySelector('.payment-summary');
     if (!payementSummaryElement) {
@@ -94,16 +94,9 @@ export function renderPayementSummary() {
         return mappedItem;
       });
 
-      const orderData = {
-        cart: mappedCart,
-        orderDate: new Date().toISOString().split('T')[0],
-        totalCost: Math.round((totalBeforeCharge + (totalBeforeCharge * 0.1))),
-        shippingCost: Math.round(shippingCharges),
-        tax: Math.round(totalBeforeCharge * 0.1),
-        itemsCost: Math.round(totalCost)
-      };
+     
 
-      console.log('Sending order data:', orderData);
+ 
 
       try {
         const response = await fetch('https://supersimplebackend.dev/orders', {
@@ -122,7 +115,8 @@ export function renderPayementSummary() {
         // }
         
         const orders = await response.json();
-        placeOrders(orders)
+        placeOrders(orders);
+       orderDate = new Date
         console.log('Order created successfully:', orders);
       } catch (error) {
         console.error('Error creating order:', error);
@@ -131,3 +125,12 @@ export function renderPayementSummary() {
     });
 
   }
+
+function renderOrder() {
+  const container = document.querySelector('.js-order-container');
+  if (!container) {
+    // Not on the orders page, so just exit
+    return;
+  }
+  // ... rest of your code ...
+}

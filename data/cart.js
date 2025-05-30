@@ -37,6 +37,11 @@ export function calcDeliveryCart(param) {
    )
  return calcDay
 }
+export function orderPlacedDate(){
+  const today = format( new Date(), 'EEEE, MMMM dd');
+  console.log(today)
+  return today
+}
 console.log(dateOptions2)
 calcCulateDelivery()
 export function updateCartQuantity(param, btn, dateOptionsID = 1) { 
