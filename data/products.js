@@ -1,4 +1,5 @@
-import { moneyFn } from "../jsx/money.js";
+import { formatCurrency } from "../jsx/formatCurr.js";
+
 class Product {
   id;
   image;
@@ -18,20 +19,23 @@ class Product {
     return `images/ratings/rating-${this.rating.stars * 10}.png`
   }
 
-  getPrice(){
-    return moneyFn(this.priceCents)
+  getPrice() {
+    return formatCurrency(this.priceCents);
   }
 
-  setImage(){
+  setImage() {
     return '';
   }
-    instructionLink(){
-      return ''
-    }
-    warrantyLink(){
-      return ''
-    }
+  
+  instructionLink() {
+    return '';
+  }
+  
+  warrantyLink() {
+    return '';
+  }
 }
+
 class Clothing extends Product{
   sizeChartLink;
     constructor(details){

@@ -4,9 +4,8 @@ import { renderPayementSummary } from "./checkout/payementSUmmary.js";
 // import {   } from "../data/products.js";
 import { getCartBackend } from "../data/cart.js";
 
-
-renderOrderSummary()
-renderPayementSummary()
+renderOrderSummary();
+renderPayementSummary();
 // Show loading indicators
 // new Promise((response) =>{
 //   getFromBackend(() =>{

@@ -6,15 +6,13 @@ let orders = JSON.parse(localStorage.getItem('orders')) || [];
 
 // console.log(orders)
 
-export function placeOrders(param){
-    orders.unshift(param)
-    // console.log(param)
-    saveToStorage()
+export function placeOrders(param) {
+  orders.unshift(param);
+  saveToStorage();
 }
 
-
-function saveToStorage(){
-    localStorage.setItem('orders', JSON.stringify(orders));
+function saveToStorage() {
+  localStorage.setItem('orders', JSON.stringify(orders));
 }
 
 function renderOrder() {
@@ -30,7 +28,7 @@ function renderOrder() {
     container.innerHTML = `
       <div class="empty-cart-message">
         <p>Your cart is empty</p>
-        <a href="ecmp.html" class="continue-shopping-link">Continue Shopping</a>
+        <a href="amazon.html" class="continue-shopping-link">Continue Shopping</a>
       </div>`;
     return;
   }
@@ -39,7 +37,7 @@ function renderOrder() {
     container.innerHTML = `
       <div class="empty-cart-message">
         <p>You have no orders yet.</p>
-        <a href="ecmp.html" class="continue-shopping-link">Continue Shopping</a>
+        <a href="amazon.html" class="continue-shopping-link">Continue Shopping</a>
       </div>`;
     return;
   }
@@ -120,7 +118,7 @@ function renderOrder() {
         };
         
         placeOrders(newOrder);
-        window.location.href = 'ecmp.html'; // Redirect to shopping page
+        window.location.href = 'amazon.html'; // Redirect to shopping page
       }
     });
   });

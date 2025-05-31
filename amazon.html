@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Amazon Project</title>
-    <link rel="image icon" type="png" href="./images/icons/cart-icon.png ">
+    <title>Amazon.com</title>
+    <link rel="image icon" type="png" href="./images/icons/cart-icon.png">
 
     <!-- This code is needed for responsive design to work.
       (Responsive design = make the website look good on
@@ -44,23 +44,18 @@
           <span class="orders-text">& Orders</span>
         </a>
 
-        <a class="cart-link header-link" href="cheo.html">
+        <a class="cart-link header-link" href="checkout.html">
           <img class="cart-icon" src="images/icons/cart-icon.png">
-          <div class="cart-quantity"></div>
+          <div class="cart-quantity">3</div>
           <div class="cart-text">Cart</div>
         </a>
       </div>
     </div>
     
     <div class="main">
-      <div class="products-grid">
-    </div>
+      <div class="products-grid" id="js-products-grid">
+      </div>
     </div>   
-    <script src="data/car.js"></script>
-    <script type="module" src="data/cartO.js"></script>
-        <script type="module" src="data/cart.js"></script>
-<script type ="module" src="jsx/ecmp.js"></script>
-
-   
+    <script type="module" src="jsx/amazon.js"></script>
   </body>
 </html>
